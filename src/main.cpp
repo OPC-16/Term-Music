@@ -8,6 +8,7 @@ int main() {
 
     Display display;
     display.initialize();
+    display.displaySongs();
     refresh();
 
     getch();
