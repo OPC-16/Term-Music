@@ -1,30 +1,30 @@
 LIB = -lncurses
 
 OBJ_FILES += \
-			 obj/control.o \
-			 obj/display.o \
-			 obj/song.o \
-			 obj/main.o	\
+			 src/obj/control.o \
+			 src/obj/display.o \
+			 src/obj/song.o \
+			 src/obj/main.o	\
 
 default: $(OBJ_FILES)
-	g++ obj/*.o $(LIB) -o ../output/term-music
+	g++ src/obj/*.o $(LIB) -o output/term-music
 
-obj/control.o: control.cpp
-	g++ -c control.cpp -o obj/control.o
+src/obj/control.o: src/control.cpp
+	g++ -c src/control.cpp -o src/obj/control.o
 
-obj/display.o: display.cpp
-	g++ -c display.cpp -o obj/display.o
+src/obj/display.o: src/display.cpp
+	g++ -c src/display.cpp -o src/obj/display.o
 
-obj/song.o: song.cpp
-	g++ -c song.cpp -o obj/song.o
+src/obj/song.o: src/song.cpp
+	g++ -c src/song.cpp -o src/obj/song.o
 
-obj/main.o: control.cpp
-	g++ -c main.cpp -o obj/main.o
+src/obj/main.o: src/main.cpp
+	g++ -c src/main.cpp -o src/obj/main.o
 
 run: 
 	@echo "--- Running Term-Music ---"
-	@./../output/term-music
+	@./output/term-music
 
 clean:
 	@echo "--- Removing all Object Files from obj/ dir ---"
-	rm -r obj/*.o
+	rm -r src/obj/*.o
