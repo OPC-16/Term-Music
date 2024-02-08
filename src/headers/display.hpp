@@ -1,14 +1,14 @@
 #pragma once
 
+#include <vector>
+#include <string>
 #include <ncurses.h>
-
-#include "song.hpp"
 
 class Display {
     public:
         Display();
 
-        ~Display();
+        // ~Display();
 
         void initialize();
 
@@ -16,12 +16,19 @@ class Display {
 
         void refresh(WINDOW* win);
 
-        void displaySongs();
+        void displaySongs(const std::vector<std::string>&, int);
+
+        WINDOW* getSongListWindow();
+
+        WINDOW* getCurrentSongWindow();
+
+        WINDOW* getTimeWindow();
+
+        chtype getInput();
     private:
         void construct();
 
     private:
         WINDOW *songListWindow, *currentSongWindow, *timeWindow;
-        Song* song = new Song("/home/omkar/Hermes");
         int yMax, xMax;
 };

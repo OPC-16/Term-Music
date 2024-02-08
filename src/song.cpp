@@ -24,6 +24,10 @@ std::string Song::getCurrentSong() {
     return currentSong;
 }
 
+std::string Song::getRootSongDirectory() {
+    return rootSongDirectory;
+}
+
 void Song::initialize() {
     try {
         for (const auto& entry : fs::directory_iterator(rootSongDirectory)) {

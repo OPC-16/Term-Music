@@ -13,6 +13,8 @@ class Song {
 
         std::string getCurrentSong();
 
+        std::string getRootSongDirectory();
+
         void initialize();
 
     private:

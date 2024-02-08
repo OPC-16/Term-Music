@@ -8,10 +8,6 @@ Display::Display() {
     construct();
 }
 
-Display::~Display() {
-    delete song;
-}
-
 void Display::initialize() {
     clear(songListWindow);
     refresh(songListWindow);
@@ -39,20 +35,28 @@ void Display::construct() {
     timeWindow = newwin(1, xMax, yMax - 2, 0);
 }
 
-void Display::displaySongs() {
-    std::vector<std::string> directories = song->getDirectories();
-    std::vector<std::string> songs = song->getSongs();
-
+void Display::displaySongs(const std::vector<std::string>& vectorToDisplay, int yOffset) {
     clear(songListWindow);
 
-    int i, j;
-    for (i = 0; i < directories.size(); i++) {
-        mvwprintw(songListWindow, i+1, 1, "%s", directories[i].c_str());
-    }
-
-    for (j = 0; j < songs.size(); j++, i++) {
-        mvwprintw(songListWindow, i, 1, "%s", songs[j].c_str());
+    for (int i = yOffset; i < vectorToDisplay.size(); i++) {
+        mvwprintw(songListWindow, i, 1, "%s", vectorToDisplay[i].c_str());
     }
 
     refresh(songListWindow);
+}
+
+WINDOW* Display::getSongListWindow() {
+    return songListWindow;
+}
+
+WINDOW* Display::getCurrentSongWindow() {
+    return currentSongWindow;
+}
+
+WINDOW* Display::getTimeWindow() {
+    return timeWindow;
+}
+
+chtype Display::getInput() {
+    return wgetch(songListWindow);  //wgetch also performs an addtionnal wrefresh on the specified window
 }
