@@ -36,8 +36,6 @@ void Display::construct() {
 }
 
 void Display::displaySongs(const std::vector<std::string>& vectorToDisplay, int yOffset) {
-    clear(songListWindow);
-
     for (int i = yOffset; i < vectorToDisplay.size(); i++) {
         mvwprintw(songListWindow, i, 1, "%s", vectorToDisplay[i].c_str());
     }

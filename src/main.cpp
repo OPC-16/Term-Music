@@ -1,6 +1,5 @@
 #include <ncurses.h>
 
-#include "headers/display.hpp"
 #include "headers/control.hpp"
 
 int main() {
