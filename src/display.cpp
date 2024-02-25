@@ -33,11 +33,24 @@ void Display::construct() {
     songListWindow = newwin(yMax - 3, xMax, 0, 0);
     currentSongWindow = newwin(1, xMax, yMax - 3, 0);
     timeWindow = newwin(1, xMax, yMax - 2, 0);
+
+    selectedIndex = 1;
+
+    scrollok(songListWindow, true);
+    keypad(songListWindow, true);
 }
 
 void Display::displaySongs(const std::vector<std::string>& vectorToDisplay, int yOffset) {
     for (int i = yOffset; i < vectorToDisplay.size(); i++) {
+        // highlight the selected string
+        // if (i == selectedIndex)
+        //     wattron(songListWindow, A_REVERSE);
+
         mvwprintw(songListWindow, i, 1, "%s", vectorToDisplay[i].c_str());
+
+        // turn off highlighting
+        // if (i == selectedIndex)
+        //     wattroff(songListWindow, A_REVERSE);
     }
 
     refresh(songListWindow);

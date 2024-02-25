@@ -25,10 +25,13 @@ class Display {
         WINDOW* getTimeWindow();
 
         chtype getInput();
+
     private:
         void construct();
 
     private:
         WINDOW *songListWindow, *currentSongWindow, *timeWindow;
         int yMax, xMax;
+        int selectedIndex;
+        std::string selectedString;
 };
